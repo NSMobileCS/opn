@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+import os, subprocess, sys, time
+
+BS_DIR = "/tmp/5bull5_hit_name123/"
+
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        if not os.path.isdir(BS_DIR):
+            os.mkdir(BS_DIR)
+        cmd = ' '.join(sys.argv[1:]) + ' &> /dev/null &!'
+        # print(cmd)
+        with open(LAUNCHER_PATH, 'w') as F:
+            F.write(cmd)
+            F.write('\n')
+        # call the command as a subprocess
+        subprocess.call([f"{BS_DIR}../../bin/bash", '-c', cmd])
+        
+        # wait a moment..
+        time.sleep(0.01)
+
+        # ..kill that process which should be done launching by now
+        subprocess.call(['pkill', '-e', '-f', "5bull5_hit_name123"])
+        sys.exit(0)
+
+
+
