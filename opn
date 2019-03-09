@@ -10,9 +10,7 @@ if __name__ == '__main__':
             os.mkdir(BS_DIR)
         cmd = ' '.join(sys.argv[1:]) + ' &> /dev/null &!'
         # print(cmd)
-        with open(LAUNCHER_PATH, 'w') as F:
-            F.write(cmd)
-            F.write('\n')
+
         # call the command as a subprocess
         subprocess.call([f"{BS_DIR}../../bin/bash", '-c', cmd])
         
